@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 function App() {
 
-const [xoffset, setXoffset] = useState(100);
+const [xoffset, setXoffset] = useState(200);
 const [yoffset, setYoffset] = useState(10);
 const [delta, setDelta] = useState(1);
 const [jumping, setJumping] = useState(false);
@@ -14,6 +14,14 @@ const [piller1xoffset, setpiller1xoffset] = useState(1500)
 const [piller2xoffset, setpiller2xoffset] = useState(2500)
 const [piller3xoffset, setpiller3xoffset] = useState(1000)
 const [piller4xoffset, setpiller4xoffset] = useState(2000)
+
+const background={
+  backgroundImage: "url('https://wallpaperaccess.com/full/4622688.png')",
+  height:'100vh',
+  marginTop:'0px',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+};
 
 useEffect(()=>{
   if(gameover===false){
@@ -138,7 +146,7 @@ useEffect(()=>{
 
 
 	return (
-	<div>
+	<div style={background}>
 		<h2
 		style={{
 			position: "absolute",
