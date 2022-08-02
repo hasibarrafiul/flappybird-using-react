@@ -188,13 +188,13 @@ useEffect(()=>{
 		>
 		----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		</h2>
-    <button style={{
+    <Button variant="contained" style={{
 			position: "absolute",
 			left: `0px`,
 			top: `92%`,
       width: `100%`,
       height: `80px`,
-		}} onClick={(e)=>jump()}>Jump</button>
+		}} onClick={(e)=>jump()}>Jump</Button>
 
       <button style={{
         position: "absolute",
