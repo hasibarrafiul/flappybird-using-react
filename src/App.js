@@ -28,7 +28,7 @@ useEffect(()=>{
   if(gameover===false){
     if(jumping===false){
       setTimeout(()=>{
-        if(yoffset<=550 && yoffset>=-20){
+        if(yoffset<=550 && yoffset>=-50){
           moveBirdToDown()
         }
         else{
@@ -76,7 +76,7 @@ useEffect(()=>{
     }
 
     if(xoffset===(piller3xoffset-60)){
-      if(yoffset<=190){
+      if(yoffset<=180){
         setGameover(true);
       }
     }
