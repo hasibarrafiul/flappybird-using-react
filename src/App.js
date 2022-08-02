@@ -9,6 +9,8 @@ const [delta, setDelta] = useState(1);
 const [jumping, setJumping] = useState(false);
 const [jumplength, setJumplength] = useState(0);
 
+const [piller1xoffset, setpiller1xoffset] = useState(1500)
+
 useEffect(()=>{
   if(jumping===false){
     setTimeout(()=>{
@@ -32,22 +34,33 @@ useEffect(()=>{
       }
      }, 0.5)
   }
-},[yoffset, jumping])
+
+  setTimeout(()=>{
+    movepiller1toleft()
+  },1)
+  
+},[yoffset, jumping, piller1xoffset])
 
 
 
   const moveBirdToDown = () => {
     setYoffset(yoffset+delta);
   }
-  const moveBirdToRight = () => {
-    setXoffset(xoffset+delta);
-  }
-  const moveBirdToLeft = () => {
-    setXoffset(xoffset-delta);
-  }
+
   const jump = () => {
     setJumping(true);
     setYoffset(yoffset-delta);
+  }
+
+
+  const movepiller1toleft = () => {
+    if(piller1xoffset>0){
+      setpiller1xoffset(piller1xoffset-0.5);
+    }
+    else{
+      setpiller1xoffset(1500)
+    }
+    
   }
 
 	return (
@@ -77,6 +90,15 @@ useEffect(()=>{
 			top: `700px`,
       width: `1500px`,
 		}} onClick={(e)=>jump()}>Jump</button>
+
+      <button style={{
+        position: "absolute",
+        left: `${piller1xoffset}px`,
+        bottom: `120px`,
+        width: `10px`,
+        height: `400px`
+      }}></button>
+
 	</div>
 	);
 }
