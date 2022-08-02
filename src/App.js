@@ -4,15 +4,15 @@ import React, { useEffect, useState } from "react";
 function App() {
 
 const [xoffset, setXoffset] = useState(100);
-const [yoffset, setYoffset] = useState(0);
+const [yoffset, setYoffset] = useState(10);
 const [delta, setDelta] = useState(1);
-const [jumping, setJumping] = useState(false)
-const [jumplength, setJumplength] = useState(0)
+const [jumping, setJumping] = useState(false);
+const [jumplength, setJumplength] = useState(0);
 
 useEffect(()=>{
   if(jumping===false){
     setTimeout(()=>{
-      if(yoffset<=600){
+      if(yoffset<=600 && yoffset>=0){
         moveBirdToDown()
       }
       else{
