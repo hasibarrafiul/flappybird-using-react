@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from "react";
+import flappylogo from './flappy.png';
 
 function App() {
 
@@ -62,25 +63,25 @@ useEffect(()=>{
       movepiller4toleft()
     },1)
 
-    if(xoffset===(piller1xoffset-40)){
+    if(xoffset===(piller1xoffset-60)){
       if(yoffset>=160){
         setGameover(true);
       }
     }
 
-    if(xoffset===(piller2xoffset-40)){
+    if(xoffset===(piller2xoffset-60)){
       if(yoffset>=260){
         setGameover(true);
       }
     }
 
-    if(xoffset===(piller3xoffset-40)){
+    if(xoffset===(piller3xoffset-60)){
       if(yoffset<=190){
         setGameover(true);
       }
     }
 
-    if(xoffset===(piller4xoffset-40)){
+    if(xoffset===(piller4xoffset-60)){
       if(yoffset<=290){
         setGameover(true);
       }
@@ -154,7 +155,7 @@ useEffect(()=>{
 			top: `${yoffset}px`,
 		}}
 		>
-		Bird
+		<img src={flappylogo} height="100" width="100"/>
 		</h2>
 
     <h2
@@ -169,8 +170,9 @@ useEffect(()=>{
     <button style={{
 			position: "absolute",
 			left: `0px`,
-			top: `700px`,
-      width: `1500px`,
+			top: `650px`,
+      width: `1585px`,
+      height: `80px`,
 		}} onClick={(e)=>jump()}>Jump</button>
 
       <button style={{
