@@ -30,7 +30,6 @@ useEffect(()=>{
         setJumping(false);
         setJumplength(0);
       }
-    
      }, 0.5)
   }
 },[yoffset, jumping])
