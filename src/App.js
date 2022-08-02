@@ -11,6 +11,7 @@ const [jumplength, setJumplength] = useState(0);
 const [gameover, setGameover] = useState(false);
 
 const [piller1xoffset, setpiller1xoffset] = useState(1500)
+const [piller2xoffset, setpiller2xoffset] = useState(2200)
 
 useEffect(()=>{
   if(gameover===false){
@@ -41,8 +42,24 @@ useEffect(()=>{
     setTimeout(()=>{
       movepiller1toleft()
     },1)
+    setTimeout(()=>{
+      movepiller2toleft()
+    },1)
+
+    if(xoffset===(piller1xoffset-40)){
+      if(yoffset>=160){
+        setGameover(true);
+      }
+    }
+
+    if(xoffset===(piller2xoffset-40)){
+      if(yoffset>=260){
+        setGameover(true);
+      }
+    }
+
   }
-},[yoffset, jumping, piller1xoffset])
+},[yoffset, jumping, piller1xoffset, piller2xoffset])
 
 
 
@@ -65,6 +82,18 @@ useEffect(()=>{
     }
     
   }
+
+  const movepiller2toleft = () => {
+    if(piller2xoffset>0){
+      setpiller2xoffset(piller2xoffset-0.5);
+    }
+    else{
+      setpiller2xoffset(2200);
+    }
+    
+  }
+
+
 
 	return (
 	<div>
@@ -100,6 +129,14 @@ useEffect(()=>{
         bottom: `120px`,
         width: `10px`,
         height: `400px`
+      }}></button>
+
+<button style={{
+        position: "absolute",
+        left: `${piller2xoffset}px`,
+        bottom: `120px`,
+        width: `10px`,
+        height: `300px`
       }}></button>
 
 	</div>
