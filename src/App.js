@@ -1,8 +1,31 @@
 import './App.css';
 import React, { useEffect, useState } from "react";
 import flappylogo from './flappy.png';
+import Slide from '@mui/material/Slide';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function App() {
+
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    window.location.reload()
+    
+  };
+
 
 const [xoffset, setXoffset] = useState(200);
 const [yoffset, setYoffset] = useState(10);
@@ -33,9 +56,9 @@ useEffect(()=>{
         }
         else{
           setGameover(true);
-          console.log("Game over")
+          handleClickOpen();
         }
-       }, 3)
+       }, 0.2)
     }
     else{
       setTimeout(()=>{
@@ -49,7 +72,7 @@ useEffect(()=>{
         }
        }, 0.5)
     }
-  
+
     setTimeout(()=>{
       movepiller1toleft()
     },1)
@@ -204,6 +227,22 @@ useEffect(()=>{
         width: `10px`,
         height: `300px`
       }}></button>
+
+<Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle><p>{"Game Over"}</p></DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+          
+          <Button onClick={handleClose}>New Game</Button>
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
 
 	</div>
 	);
