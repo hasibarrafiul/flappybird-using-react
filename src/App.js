@@ -28,7 +28,7 @@ useEffect(()=>{
   if(gameover===false){
     if(jumping===false){
       setTimeout(()=>{
-        if(yoffset<=600 && yoffset>=0){
+        if(yoffset<=550 && yoffset>=-20){
           moveBirdToDown()
         }
         else{
