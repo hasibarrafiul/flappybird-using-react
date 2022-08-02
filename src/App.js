@@ -80,15 +80,12 @@ useEffect(()=>{
         setGameover(true);
       }
     }
-
+    
     if(xoffset===(piller4xoffset-60)){
       if(yoffset<=290){
         setGameover(true);
       }
     }
-
-    
-
   }
 },[yoffset, jumping, piller1xoffset, piller2xoffset, piller3xoffset, piller4xoffset])
 
