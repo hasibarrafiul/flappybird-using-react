@@ -8,37 +8,40 @@ const [yoffset, setYoffset] = useState(10);
 const [delta, setDelta] = useState(1);
 const [jumping, setJumping] = useState(false);
 const [jumplength, setJumplength] = useState(0);
+const [gameover, setGameover] = useState(false);
 
 const [piller1xoffset, setpiller1xoffset] = useState(1500)
 
 useEffect(()=>{
-  if(jumping===false){
-    setTimeout(()=>{
-      if(yoffset<=600 && yoffset>=0){
-        moveBirdToDown()
-      }
-      else{
-        console.log("Game over")
-      }
-     }, 5)
-  }
-  else{
-    setTimeout(()=>{
-      if(jumplength<80){
-        jump();
-        setJumplength(jumplength+1);
-      }
-      else{
-        setJumping(false);
-        setJumplength(0);
-      }
-     }, 0.5)
-  }
-
-  setTimeout(()=>{
-    movepiller1toleft()
-  },1)
+  if(gameover===false){
+    if(jumping===false){
+      setTimeout(()=>{
+        if(yoffset<=600 && yoffset>=0){
+          moveBirdToDown()
+        }
+        else{
+          setGameover(true);
+          console.log("Game over")
+        }
+       }, 5)
+    }
+    else{
+      setTimeout(()=>{
+        if(jumplength<80){
+          jump();
+          setJumplength(jumplength+1);
+        }
+        else{
+          setJumping(false);
+          setJumplength(0);
+        }
+       }, 0.5)
+    }
   
+    setTimeout(()=>{
+      movepiller1toleft()
+    },1)
+  }
 },[yoffset, jumping, piller1xoffset])
 
 
