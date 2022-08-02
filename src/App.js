@@ -11,7 +11,9 @@ const [jumplength, setJumplength] = useState(0);
 const [gameover, setGameover] = useState(false);
 
 const [piller1xoffset, setpiller1xoffset] = useState(1500)
-const [piller2xoffset, setpiller2xoffset] = useState(2200)
+const [piller2xoffset, setpiller2xoffset] = useState(2500)
+const [piller3xoffset, setpiller3xoffset] = useState(1000)
+const [piller4xoffset, setpiller4xoffset] = useState(2000)
 
 useEffect(()=>{
   if(gameover===false){
@@ -24,7 +26,7 @@ useEffect(()=>{
           setGameover(true);
           console.log("Game over")
         }
-       }, 5)
+       }, 3)
     }
     else{
       setTimeout(()=>{
@@ -45,6 +47,12 @@ useEffect(()=>{
     setTimeout(()=>{
       movepiller2toleft()
     },1)
+    setTimeout(()=>{
+      movepiller3toleft()
+    },1)
+    setTimeout(()=>{
+      movepiller4toleft()
+    },1)
 
     if(xoffset===(piller1xoffset-40)){
       if(yoffset>=160){
@@ -58,8 +66,22 @@ useEffect(()=>{
       }
     }
 
+    if(xoffset===(piller3xoffset-40)){
+      if(yoffset<=190){
+        setGameover(true);
+      }
+    }
+
+    if(xoffset===(piller4xoffset-40)){
+      if(yoffset<=290){
+        setGameover(true);
+      }
+    }
+
+    
+
   }
-},[yoffset, jumping, piller1xoffset, piller2xoffset])
+},[yoffset, jumping, piller1xoffset, piller2xoffset, piller3xoffset, piller4xoffset])
 
 
 
@@ -78,7 +100,7 @@ useEffect(()=>{
       setpiller1xoffset(piller1xoffset-0.5);
     }
     else{
-      setpiller1xoffset(1500)
+      setpiller1xoffset(2000)
     }
     
   }
@@ -88,7 +110,27 @@ useEffect(()=>{
       setpiller2xoffset(piller2xoffset-0.5);
     }
     else{
-      setpiller2xoffset(2200);
+      setpiller2xoffset(2000);
+    }
+    
+  }
+
+  const movepiller3toleft = () => {
+    if(piller3xoffset>0){
+      setpiller3xoffset(piller3xoffset-0.5);
+    }
+    else{
+      setpiller3xoffset(2000);
+    }
+    
+  }
+
+  const movepiller4toleft = () => {
+    if(piller4xoffset>0){
+      setpiller4xoffset(piller4xoffset-0.5);
+    }
+    else{
+      setpiller4xoffset(2000);
     }
     
   }
@@ -114,7 +156,7 @@ useEffect(()=>{
 			top: `600px`,
 		}}
 		>
-		--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		</h2>
     <button style={{
 			position: "absolute",
@@ -131,10 +173,26 @@ useEffect(()=>{
         height: `400px`
       }}></button>
 
-<button style={{
+      <button style={{
         position: "absolute",
         left: `${piller2xoffset}px`,
         bottom: `120px`,
+        width: `10px`,
+        height: `300px`
+      }}></button>
+
+      <button style={{
+        position: "absolute",
+        left: `${piller3xoffset}px`,
+        top: `0px`,
+        width: `10px`,
+        height: `200px`
+      }}></button>
+
+      <button style={{
+        position: "absolute",
+        left: `${piller4xoffset}px`,
+        top: `0px`,
         width: `10px`,
         height: `300px`
       }}></button>
