@@ -28,8 +28,8 @@ useEffect(()=>{
   if(gameover===false){
     if(jumping===false){
       setTimeout(()=>{
-        if(yoffset<=550 && yoffset>=-50){
-          moveBirdToDown()
+        if(yoffset<=750 && yoffset>=-50){
+          moveBirdToDown();
         }
         else{
           setGameover(true);
@@ -64,25 +64,25 @@ useEffect(()=>{
     },1)
 
     if(xoffset===(piller1xoffset-60)){
-      if(yoffset>=160){
+      if(yoffset>=380){
         setGameover(true);
       }
     }
 
     if(xoffset===(piller2xoffset-60)){
-      if(yoffset>=260){
+      if(yoffset>=480){
         setGameover(true);
       }
     }
 
     if(xoffset===(piller3xoffset-60)){
-      if(yoffset<=180){
+      if(yoffset<=170){
         setGameover(true);
       }
     }
     
     if(xoffset===(piller4xoffset-60)){
-      if(yoffset<=290){
+      if(yoffset<=270){
         setGameover(true);
       }
     }
@@ -159,23 +159,24 @@ useEffect(()=>{
 		style={{
 			position: "absolute",
 			left: `0px`,
-			top: `600px`,
+			top: `87%`,
+      width: '100%',
 		}}
 		>
-		------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		</h2>
     <button style={{
 			position: "absolute",
 			left: `0px`,
-			top: `650px`,
-      width: `1585px`,
+			top: `92%`,
+      width: `100%`,
       height: `80px`,
 		}} onClick={(e)=>jump()}>Jump</button>
 
       <button style={{
         position: "absolute",
         left: `${piller1xoffset}px`,
-        bottom: `120px`,
+        top: `48%`,
         width: `10px`,
         height: `400px`
       }}></button>
@@ -183,7 +184,7 @@ useEffect(()=>{
       <button style={{
         position: "absolute",
         left: `${piller2xoffset}px`,
-        bottom: `120px`,
+        top: `59%`,
         width: `10px`,
         height: `300px`
       }}></button>
