@@ -33,7 +33,7 @@ useEffect(()=>{
     
      }, 0.5)
   }
-},[yoffset])
+},[yoffset, jumping])
 
 
 
