@@ -39,6 +39,8 @@ const [piller2xoffset, setpiller2xoffset] = useState(2500)
 const [piller3xoffset, setpiller3xoffset] = useState(1000)
 const [piller4xoffset, setpiller4xoffset] = useState(2000)
 
+const [score, setScore] = useState(0);
+
 const background={
   backgroundImage: "url('https://wallpaperaccess.com/full/4622688.png')",
   height:'100vh',
@@ -49,6 +51,9 @@ const background={
 
 useEffect(()=>{
   if(gameover===false){
+    setTimeout(()=>{
+      setScore(score+1);
+    },1000);
     if(jumping===false){
       setTimeout(()=>{
         if(yoffset<=750 && yoffset>=-50){
@@ -58,7 +63,7 @@ useEffect(()=>{
           setGameover(true);
           handleClickOpen();
         }
-       }, 0.2)
+       }, 0.002)
     }
     else{
       setTimeout(()=>{
@@ -168,6 +173,12 @@ useEffect(()=>{
 
 	return (
 	<div style={background}>
+    <h1
+    style={{
+			position: "absolute",
+			right: `5%`,
+			top: `0px`,
+		}}>Score : {score}</h1>
 		<h2
 		style={{
 			position: "absolute",
@@ -243,6 +254,8 @@ useEffect(()=>{
           </DialogContentText>
         </DialogContent>
       </Dialog>
+
+      
 
 	</div>
 	);
